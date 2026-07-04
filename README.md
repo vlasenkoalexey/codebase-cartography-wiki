@@ -66,36 +66,23 @@ strong→weak reading is defensible, and scored against **one explicit yardstick
 portable source of code comprehension.** That yardstick is essentially wikify-repo's own design goal,
 so it scores full marks *by construction* — a tool built for semantic recall (claude-context) or
 security metrics (gitgalaxy) would top a *different* scorecard. Read each mark as "fit for **this**
-purpose," not "better tool."
+purpose," not "better tool." **Language coverage** is a plain count, not a verdict — and it trades
+directly against grounding precision (compare the two adjacent columns: wikify-repo is the deepest but
+narrowest; gitgalaxy and openwiki are the broadest but shallowest).
 
-**Legend:** ✅ strong · ➖ partial / trade-off · ❌ weak or absent · ❔ unknown / unbounded
+**Legend:** ✅ strong · ➖ partial / trade-off · ❌ weak or absent · ❔ unknown / unbounded · marks are annotated with the *why* in-cell
 
-| Tool | Faithfulness gate | Grounding precision | Whole-repo coverage | Tool-free retrieval | Commit-pinned |
-|---|:--:|:--:|:--:|:--:|:--:|
-| **wikify-repo** | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **codegraphcontext** | ➖ | ➖ ¹ | ✅ | ❌ | ➖ |
-| **codegraph** | ➖ | ➖ | ✅ | ❌ | ➖ |
-| **tree-sitter-analyzer** | ➖ | ➖ | ✅ | ❌ | ➖ |
-| **understand-anything** | ➖ | ➖ | ✅ | ❌ | ➖ |
-| **graphify** | ➖ | ➖ | ✅ | ❌ | ➖ |
-| **claude-context** | ➖ ² | ➖ | ✅ | ❌ | ➖ |
-| **gitgalaxy** | ➖ ³ | ❌ | ✅ | ✅ ⁴ | ➖ |
-| **openwiki** | ❌ | ❌ | ❔ | ✅ | ✅ |
-
-*Axis definitions:* **Faithfulness gate** — does a build step *reject* ungrounded claims (✅), only
-soft-mitigate them (➖), or rely on a prompt/none (❌)? **Grounding precision** — compiler-grade SCIP
-(✅), tree-sitter/AST (➖), regex or none (❌). **Whole-repo coverage** — is every file guaranteed
-represented (✅) or is it whatever the agent happened to visit (❔)? **Tool-free retrieval** — can you
-answer by reading static files (✅), or is a server/DB/app required (❌)? **Commit-pinned** — is the
-artifact tied to an explicit commit for reproducible/point-in-time builds (✅), or does it track the
-live working tree (➖)?
-
-*Notes:* ¹ codegraphcontext parses with tree-sitter by default; SCIP is an *optional* lane, not the
-default. ² claude-context is faithful *by construction* (it returns only real retrieved chunks, never
-synthesizing a claim), but retrieval is embedding-similarity, not symbol-precise, and there is no
-synthesis step to gate. ³ gitgalaxy emits *counted* metrics (no claims to gate); it is guarded by
-adversarial ReDoS/hallucination test gauntlets rather than symbol resolution. ⁴ gitgalaxy's output is
-a static metrics report (readable without infrastructure) — risk numbers, not queryable comprehension.
+| Tool | Faithfulness gate | Grounding precision | Language coverage | Whole-repo coverage | Tool-free retrieval | Commit-pinned |
+|---|:--|:--|:--|:--|:--|:--|
+| **wikify-repo** | ✅ hard citation gate | ✅ SCIP index | ~5 · SCIP-indexer-bound | ✅ catalog floor | ✅ read Markdown | ✅ any commit (`--ref`) |
+| **codegraphcontext** | ➖ confidence tiers | ➖ tree-sitter (SCIP optional) | 23 · tree-sitter | ✅ full graph | ❌ MCP + graph DB | ❌ indexes current state |
+| **codegraph** | ➖ confidence + heuristic edges | ➖ tree-sitter | ~39 · tree-sitter | ✅ full graph | ❌ MCP + SQLite | ❌ fs-watcher (live) |
+| **tree-sitter-analyzer** | ➖ verdicts + family gate | ➖ tree-sitter | 21 · tree-sitter | ✅ ~43k symbols | ❌ MCP/CLI + SQLite | ❌ content cache (live) |
+| **understand-anything** | ➖ Zod repair (LLM graph) | ➖ tree-sitter CST | 12 · tree-sitter | ✅ batch + merge | ❌ dashboard / JSON | ❌ content fingerprint |
+| **graphify** | ➖ conservative + god-node guard | ➖ AST + LLM | ~36 · AST (+ prose/media) | ✅ full graph | ❌ MCP + graph | ➖ git hooks, live tree |
+| **claude-context** | ➖ real chunks, no synth to gate | ➖ AST chunks → embeddings | 9 · tree-sitter (+ fallback) | ✅ chunk index | ❌ vector DB (cloud) | ❌ content Merkle (live) |
+| **gitgalaxy** | ➖ counts + ReDoS tests | ❌ regex, no AST | 57 · regex | ✅ counts | ✅ static metrics report | ❌ full scan (current) |
+| **openwiki** | ❌ prompt only | ❌ none (LLM reads) | any · no parser (LLM) | ❔ agent-visited | ✅ read Markdown | ➖ git-HEAD anchored |
 
 ### What I take from it
 
