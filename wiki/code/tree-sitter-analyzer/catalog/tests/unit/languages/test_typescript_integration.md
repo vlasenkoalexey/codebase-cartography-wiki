@@ -1,0 +1,46 @@
+---
+title: 'Module: tests/unit/languages/test_typescript_integration.py'
+type: catalog
+provenance: extracted
+module: tests/unit/languages/test_typescript_integration.py
+status: fresh
+symbol_base: scip-python python tree-sitter-analyzer 0.0.0 `tests.unit.languages.test_typescript_integration`/TestTypeScriptIntegration#
+symbols:
+  TestTypeScriptIntegration.test_end_to_end_typescript_workflow: test_end_to_end_typescript_workflow().
+  TestTypeScriptIntegration.test_typescript_plugin_analyze_file_mock: test_typescript_plugin_analyze_file_mock().
+  TestTypeScriptIntegration.test_typescript_plugin_discovery: test_typescript_plugin_discovery().
+  TestTypeScriptIntegration.test_typescript_extractor_characteristics_detection: test_typescript_extractor_characteristics_detection().
+  TestTypeScriptIntegration.test_typescript_language_loader_integration: test_typescript_language_loader_integration().
+  TestTypeScriptIntegration.test_typescript_language_detection: test_typescript_language_detection().
+  TestTypeScriptIntegration.test_typescript_formatter_integration: test_typescript_formatter_integration().
+  TestTypeScriptIntegration.test_typescript_formatter_with_sample_data: test_typescript_formatter_with_sample_data().
+  TestTypeScriptIntegration.test_typescript_plugin_file_applicability: test_typescript_plugin_file_applicability().
+  TestTypeScriptIntegration.test_typescript_plugin_info: test_typescript_plugin_info().
+  TestTypeScriptIntegration.test_typescript_supported_queries: test_typescript_supported_queries().
+  TestTypeScriptIntegration.test_typescript_type_inference: test_typescript_type_inference().
+  TestTypeScriptIntegration.test_typescript_formatter_different_formats: test_typescript_formatter_different_formats().
+  TestTypeScriptIntegration: ''
+---
+# Module: [`tests/unit/languages/test_typescript_integration.py`](../../../../../../../raw/code/tree-sitter-analyzer/tests/unit/languages/test_typescript_integration.py)
+
+## Classes
+### `TestTypeScriptIntegration`
+- def: [`tests/unit/languages/test_typescript_integration.py:22`](../../../../../../../raw/code/tree-sitter-analyzer/tests/unit/languages/test_typescript_integration.py#L22)
+- doc: Integration tests for TypeScript support across the system
+- signature: `class TestTypeScriptIntegration:`
+- members:
+  - `test_end_to_end_typescript_workflow(self)` — [`L404`](../../../../../../../raw/code/tree-sitter-analyzer/tests/unit/languages/test_typescript_integration.py#L404) — Test complete TypeScript analysis workflow
+  - `test_typescript_extractor_characteristics_detection(self)` — [`L304`](../../../../../../../raw/code/tree-sitter-analyzer/tests/unit/languages/test_typescript_integration.py#L304) — Test TypeScript extractor file characteristics detection
+  - `test_typescript_formatter_different_formats(self)` — [`L347`](../../../../../../../raw/code/tree-sitter-analyzer/tests/unit/languages/test_typescript_integration.py#L347) — Test TypeScript formatter with different output formats
+  - `test_typescript_formatter_integration(self)` — [`L89`](../../../../../../../raw/code/tree-sitter-analyzer/tests/unit/languages/test_typescript_integration.py#L89) — Test TypeScript formatter integration with registry
+  - `test_typescript_formatter_with_sample_data(self)` — [`L103`](../../../../../../../raw/code/tree-sitter-analyzer/tests/unit/languages/test_typescript_integration.py#L103) — Test TypeScript formatter with realistic data
+  - `test_typescript_language_detection(self)` — [`L49`](../../../../../../../raw/code/tree-sitter-analyzer/tests/unit/languages/test_typescript_integration.py#L49) — Test TypeScript file detection across different extensions
+  - `test_typescript_language_loader_integration(self)` — [`L69`](../../../../../../../raw/code/tree-sitter-analyzer/tests/unit/languages/test_typescript_integration.py#L69) — Test TypeScript integration with language loader
+  - `test_typescript_plugin_analyze_file_mock(self, mock_load_language)` — [`L255`](../../../../../../../raw/code/tree-sitter-analyzer/tests/unit/languages/test_typescript_integration.py#L255) — Test TypeScript plugin file analysis with mocked dependencies
+  - `test_typescript_plugin_discovery(self)` — [`L25`](../../../../../../../raw/code/tree-sitter-analyzer/tests/unit/languages/test_typescript_integration.py#L25) — Test that TypeScript plugin can be discovered by the plugin manager
+  - `test_typescript_plugin_file_applicability(self)` — [`L179`](../../../../../../../raw/code/tree-sitter-analyzer/tests/unit/languages/test_typescript_integration.py#L179) — Test TypeScript plugin file applicability
+  - `test_typescript_plugin_info(self)` — [`L201`](../../../../../../../raw/code/tree-sitter-analyzer/tests/unit/languages/test_typescript_integration.py#L201) — Test TypeScript plugin information
+  - `test_typescript_supported_queries(self)` — [`L222`](../../../../../../../raw/code/tree-sitter-analyzer/tests/unit/languages/test_typescript_integration.py#L222) — Test TypeScript plugin supported queries
+  - `test_typescript_type_inference(self)` — [`L329`](../../../../../../../raw/code/tree-sitter-analyzer/tests/unit/languages/test_typescript_integration.py#L329) — Test TypeScript type inference functionality
+- uses (calls/refs, reference-scoped): [`AnalysisRequest`](../../../tree_sitter_analyzer/core/request.md#AnalysisRequest), [`elements`](../../../tree_sitter_analyzer/models/result.md#AnalysisResult.elements), [`language`](../../../tree_sitter_analyzer/models/result.md#AnalysisResult.language), [`file_path`](../../../tree_sitter_analyzer/models/result.md#AnalysisResult.file_path), [`success`](../../../tree_sitter_analyzer/models/result.md#AnalysisResult.success), [`file_path`](../../../tree_sitter_analyzer/core/request.md#AnalysisRequest.file_path), [`PluginManager`](../../../tree_sitter_analyzer/plugins/manager.md#PluginManager), [`FormatterRegistry`](../../../tree_sitter_analyzer/formatters/formatter_registry.md#FormatterRegistry), [`get_language_name`](../../../tree_sitter_analyzer/plugins/base.md#LanguagePlugin.get_language_name), [`detect_from_extension`](../../../tree_sitter_analyzer/language_detector.md#LanguageDetector.detect_from_extension), [`detector`](../../../tree_sitter_analyzer/language_detector.md#detector), [`register_plugin`](../../../tree_sitter_analyzer/plugins/manager.md#PluginManager.register_plugin), [`get_formatter_for_language`](../../../tree_sitter_analyzer/formatters/formatter_registry.md#FormatterRegistry.get_formatter_for_language), [`analyze_file`](../../../tree_sitter_analyzer/languages/typescript_plugin/plugin.md#TypeScriptPlugin.analyze_file), [`is_applicable`](../../../tree_sitter_analyzer/plugins/base.md#LanguagePlugin.is_applicable), [`is_language_available`](../../../tree_sitter_analyzer/language_loader.md#LanguageLoader.is_language_available), [`TypeScriptElementExtractor`](../../../tree_sitter_analyzer/languages/typescript_plugin/extractor.md#TypeScriptElementExtractor), [`load_plugins`](../../../tree_sitter_analyzer/plugins/manager.md#PluginManager.load_plugins), [`TypeScriptPlugin`](../../../tree_sitter_analyzer/languages/typescript_plugin/plugin.md#TypeScriptPlugin), [`get_loader`](../../../tree_sitter_analyzer/language_loader.md#get_loader), [`is_supported`](../../../tree_sitter_analyzer/language_detector.md#LanguageDetector.is_supported), [`source_code`](../../../tree_sitter_analyzer/languages/typescript_plugin/extractor.md#TypeScriptElementExtractor.source_code), [`framework_type`](../../../tree_sitter_analyzer/languages/typescript_plugin/extractor.md#TypeScriptElementExtractor.framework_type), [`LANGUAGE_MODULES`](../../../tree_sitter_analyzer/language_loader.md#LanguageLoader.LANGUAGE_MODULES), [`_detect_file_characteristics`](../../../tree_sitter_analyzer/languages/typescript_plugin/extractor.md#TypeScriptElementExtractor._detect_file_characteristics), [`is_applicable`](../../../tree_sitter_analyzer/languages/typescript_plugin/plugin.md#TypeScriptPlugin.is_applicable), [`_infer_type_from_value`](../../../tree_sitter_analyzer/languages/typescript_plugin/extractor.md#TypeScriptElementExtractor._infer_type_from_value), [`get_plugin_info`](../../../tree_sitter_analyzer/languages/typescript_plugin/plugin.md#TypeScriptPlugin.get_plugin_info), [`TYPESCRIPT_DIALECTS`](../../../tree_sitter_analyzer/language_loader.md#LanguageLoader.TYPESCRIPT_DIALECTS), [`get_supported_languages`](../../../tree_sitter_analyzer/formatters/formatter_registry.md#FormatterRegistry.get_supported_languages), [`get_language_name`](../../../tree_sitter_analyzer/languages/typescript_plugin/plugin.md#TypeScriptPlugin.get_language_name), [`get_file_extensions`](../../../tree_sitter_analyzer/languages/typescript_plugin/plugin.md#TypeScriptPlugin.get_file_extensions), [`current_file`](../../../tree_sitter_analyzer/languages/typescript_plugin/extractor.md#TypeScriptElementExtractor.current_file), [`is_module`](../../../tree_sitter_analyzer/languages/typescript_plugin/extractor.md#TypeScriptElementExtractor.is_module), [`is_tsx`](../../../tree_sitter_analyzer/languages/typescript_plugin/extractor.md#TypeScriptElementExtractor.is_tsx), [`get_supported_queries`](../../../tree_sitter_analyzer/languages/typescript_plugin/plugin.md#TypeScriptPlugin.get_supported_queries)
+

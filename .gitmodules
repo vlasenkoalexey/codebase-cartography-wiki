@@ -1,3 +1,27 @@
 [submodule "raw/code/wikify-repo"]
 	path = raw/code/wikify-repo
 	url = https://github.com/vlasenkoalexey/wikify-repo
+[submodule "raw/code/graphify"]
+	path = raw/code/graphify
+	url = https://github.com/Graphify-Labs/graphify
+[submodule "raw/code/understand-anything"]
+	path = raw/code/understand-anything
+	url = https://github.com/Egonex-AI/Understand-Anything
+[submodule "raw/code/openwiki"]
+	path = raw/code/openwiki
+	url = https://github.com/langchain-ai/openwiki
+[submodule "raw/code/codegraphcontext"]
+	path = raw/code/codegraphcontext
+	url = https://github.com/CodeGraphContext/CodeGraphContext
+[submodule "raw/code/claude-context"]
+	path = raw/code/claude-context
+	url = https://github.com/zilliztech/claude-context
+[submodule "raw/code/codegraph"]
+	path = raw/code/codegraph
+	url = https://github.com/colbymchenry/codegraph
+[submodule "raw/code/tree-sitter-analyzer"]
+	path = raw/code/tree-sitter-analyzer
+	url = https://github.com/aimasteracc/tree-sitter-analyzer
+[submodule "raw/code/gitgalaxy"]
+	path = raw/code/gitgalaxy
+	url = https://github.com/squid-protocol/gitgalaxy
