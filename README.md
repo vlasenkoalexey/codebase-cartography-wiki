@@ -11,6 +11,12 @@ pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f), dri
 [wikify-repo](https://github.com/vlasenkoalexey/wikify-repo). So the repo is doubly self-referential:
 a code-comprehension tool is used to comprehend code-comprehension tools.
 
+This repo is built on top of the
+[wikify-repo-demo](https://github.com/vlasenkoalexey/wikify-repo-demo) template — it provides the
+wiki scaffolding (the three-layer `raw/` → `wiki/` layout, the `wikify-ingest-repo` /
+`wikify-connect-repo` skills, and the `index.md` / `log.md` conventions); this repo instantiates it as
+a survey of code-comprehension tools.
+
 ## What's in it
 
 Two source types feed **one wiki** (one `index.md`, one `log.md`):
