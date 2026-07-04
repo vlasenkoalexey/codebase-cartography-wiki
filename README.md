@@ -58,6 +58,45 @@ ordered by grounding substrate, from compiler-grade down to none. (Wide table �
 | [**gitgalaxy**](https://github.com/squid-protocol/gitgalaxy) | Risk / security metrics | ~300 risk metrics (+ 1 XGBoost classifier) | **Regex "grammar"** (57 langs) — no AST, no LLM | Structure *counted*, not *resolved*; ReDoS/hallucination test gauntlets | Whole-repo (counts, no symbol table) | Code | Metrics report / scores | Full scan (incremental path is dead code) | Local |
 | [**openwiki**](https://github.com/langchain-ai/openwiki) | Agent-written docs | Markdown docs | **None** — LLM reads source directly (prompt) | **Prompt directive only** — no build gate | Whatever the agent visits (unbounded) | Code | Read Markdown | **git-diff + whole-tree content-hash**, prose-shaped | Local CLI; 5-provider model routing |
 
+### Scorecard
+
+The columns above are mostly *design choices* (SCIP vs tree-sitter, code-only vs any-input, MCP vs
+Markdown) — not better/worse. The marks below are a **verdict**, applied only to the dimensions where a
+strong→weak reading is defensible, and scored against **one explicit yardstick: fitness as a grounded,
+portable source of code comprehension.** That yardstick is essentially wikify-repo's own design goal,
+so it scores full marks *by construction* — a tool built for semantic recall (claude-context) or
+security metrics (gitgalaxy) would top a *different* scorecard. Read each mark as "fit for **this**
+purpose," not "better tool."
+
+**Legend:** ✅ strong · ➖ partial / trade-off · ❌ weak or absent · ❔ unknown / unbounded
+
+| Tool | Faithfulness gate | Grounding precision | Whole-repo coverage | Tool-free retrieval | Commit-pinned |
+|---|:--:|:--:|:--:|:--:|:--:|
+| **wikify-repo** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **codegraphcontext** | ➖ | ➖ ¹ | ✅ | ❌ | ➖ |
+| **codegraph** | ➖ | ➖ | ✅ | ❌ | ➖ |
+| **tree-sitter-analyzer** | ➖ | ➖ | ✅ | ❌ | ➖ |
+| **understand-anything** | ➖ | ➖ | ✅ | ❌ | ➖ |
+| **graphify** | ➖ | ➖ | ✅ | ❌ | ➖ |
+| **claude-context** | ➖ ² | ➖ | ✅ | ❌ | ➖ |
+| **gitgalaxy** | ➖ ³ | ❌ | ✅ | ✅ ⁴ | ➖ |
+| **openwiki** | ❌ | ❌ | ❔ | ✅ | ✅ |
+
+*Axis definitions:* **Faithfulness gate** — does a build step *reject* ungrounded claims (✅), only
+soft-mitigate them (➖), or rely on a prompt/none (❌)? **Grounding precision** — compiler-grade SCIP
+(✅), tree-sitter/AST (➖), regex or none (❌). **Whole-repo coverage** — is every file guaranteed
+represented (✅) or is it whatever the agent happened to visit (❔)? **Tool-free retrieval** — can you
+answer by reading static files (✅), or is a server/DB/app required (❌)? **Commit-pinned** — is the
+artifact tied to an explicit commit for reproducible/point-in-time builds (✅), or does it track the
+live working tree (➖)?
+
+*Notes:* ¹ codegraphcontext parses with tree-sitter by default; SCIP is an *optional* lane, not the
+default. ² claude-context is faithful *by construction* (it returns only real retrieved chunks, never
+synthesizing a claim), but retrieval is embedding-similarity, not symbol-precise, and there is no
+synthesis step to gate. ³ gitgalaxy emits *counted* metrics (no claims to gate); it is guarded by
+adversarial ReDoS/hallucination test gauntlets rather than symbol resolution. ⁴ gitgalaxy's output is
+a static metrics report (readable without infrastructure) — risk numbers, not queryable comprehension.
+
 ### What I take from it
 
 - **Grounding is a spectrum, and it is a precision↔breadth trade.** Exactly one tool (wikify-repo)
