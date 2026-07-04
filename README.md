@@ -70,19 +70,19 @@ purpose," not "better tool." **Language coverage** is a plain count, not a verdi
 directly against grounding precision (compare the two adjacent columns: wikify-repo is the deepest but
 narrowest; gitgalaxy and openwiki are the broadest but shallowest).
 
-**Legend:** ✅ strong · ➖ partial / trade-off · ❌ weak or absent · ❔ unknown / unbounded — with the *why* annotated in-cell. **Language coverage** carries a breadth glyph (🟢 broad ≥30 · 🟡 moderate 10–29 · ⚪ narrow <10) — magnitude only, *not* a quality mark: breadth trades against grounding precision, so a 🟢 there often pairs with a ➖/❌ in the column beside it.
+**Legend:** ✅ strong · ➖ partial / trade-off · ❌ weak or absent · ❔ unknown / unbounded — with the *why* annotated in-cell. **Language coverage** uses the same scale as a pure breadth reading (✅ ≥30 langs · ➖ 10–29 · ❌ <10 · ❔ unbounded/unknown) — but read it as *breadth only*: it trades against grounding precision, so a ✅ there often sits next to a ➖/❌ in the Grounding-precision column.
 
 | Tool | Faithfulness gate | Grounding precision | Language coverage | Whole-repo coverage | Tool-free retrieval | Commit-pinned |
 |---|:--|:--|:--|:--|:--|:--|
-| [**wikify-repo**](https://github.com/vlasenkoalexey/wikify-repo) | ✅ hard citation gate | ✅ SCIP index | ⚪ ~5 · SCIP-indexer-bound | ✅ catalog floor | ✅ read Markdown | ✅ any commit (`--ref`) |
-| [**codegraphcontext**](https://github.com/CodeGraphContext/CodeGraphContext) | ➖ confidence tiers | ➖ tree-sitter (SCIP optional) | 🟡 23 · tree-sitter | ✅ full graph | ❌ MCP + graph DB | ❌ indexes current state |
-| [**codegraph**](https://github.com/colbymchenry/codegraph) | ➖ confidence + heuristic edges | ➖ tree-sitter | 🟢 ~39 · tree-sitter | ✅ full graph | ❌ MCP + SQLite | ❌ fs-watcher (live) |
-| [**tree-sitter-analyzer**](https://github.com/aimasteracc/tree-sitter-analyzer) | ➖ verdicts + family gate | ➖ tree-sitter | 🟡 21 · tree-sitter | ✅ ~43k symbols | ❌ MCP/CLI + SQLite | ❌ content cache (live) |
-| [**understand-anything**](https://github.com/Egonex-AI/Understand-Anything) | ➖ Zod repair (LLM graph) | ➖ tree-sitter CST | 🟡 12 · tree-sitter | ✅ batch + merge | ❌ dashboard / JSON | ❌ content fingerprint |
-| [**graphify**](https://github.com/Graphify-Labs/graphify) | ➖ conservative + god-node guard | ➖ AST + LLM | 🟢 ~36 · AST (+ prose/media) | ✅ full graph | ❌ MCP + graph | ➖ git hooks, live tree |
-| [**claude-context**](https://github.com/zilliztech/claude-context) | ➖ real chunks, no synth to gate | ➖ AST chunks → embeddings | ⚪ 9 · tree-sitter (+ fallback) | ✅ chunk index | ❌ vector DB (cloud) | ❌ content Merkle (live) |
-| [**gitgalaxy**](https://github.com/squid-protocol/gitgalaxy) | ➖ counts + ReDoS tests | ❌ regex, no AST | 🟢 57 · regex | ✅ counts | ✅ static metrics report | ❌ full scan (current) |
-| [**openwiki**](https://github.com/langchain-ai/openwiki) | ❌ prompt only | ❌ none (LLM reads) | 🟢 any · no parser (LLM) | ❔ agent-visited | ✅ read Markdown | ➖ git-HEAD anchored |
+| [**wikify-repo**](https://github.com/vlasenkoalexey/wikify-repo) | ✅ hard citation gate | ✅ SCIP index | ❌ ~5 · SCIP-indexer-bound | ✅ catalog floor | ✅ read Markdown | ✅ any commit (`--ref`) |
+| [**codegraphcontext**](https://github.com/CodeGraphContext/CodeGraphContext) | ➖ confidence tiers | ➖ tree-sitter (SCIP optional) | ➖ 23 · tree-sitter | ✅ full graph | ❌ MCP + graph DB | ❌ indexes current state |
+| [**codegraph**](https://github.com/colbymchenry/codegraph) | ➖ confidence + heuristic edges | ➖ tree-sitter | ✅ ~39 · tree-sitter | ✅ full graph | ❌ MCP + SQLite | ❌ fs-watcher (live) |
+| [**tree-sitter-analyzer**](https://github.com/aimasteracc/tree-sitter-analyzer) | ➖ verdicts + family gate | ➖ tree-sitter | ➖ 21 · tree-sitter | ✅ ~43k symbols | ❌ MCP/CLI + SQLite | ❌ content cache (live) |
+| [**understand-anything**](https://github.com/Egonex-AI/Understand-Anything) | ➖ Zod repair (LLM graph) | ➖ tree-sitter CST | ➖ 12 · tree-sitter | ✅ batch + merge | ❌ dashboard / JSON | ❌ content fingerprint |
+| [**graphify**](https://github.com/Graphify-Labs/graphify) | ➖ conservative + god-node guard | ➖ AST + LLM | ✅ ~36 · AST (+ prose/media) | ✅ full graph | ❌ MCP + graph | ➖ git hooks, live tree |
+| [**claude-context**](https://github.com/zilliztech/claude-context) | ➖ real chunks, no synth to gate | ➖ AST chunks → embeddings | ❌ 9 · tree-sitter (+ fallback) | ✅ chunk index | ❌ vector DB (cloud) | ❌ content Merkle (live) |
+| [**gitgalaxy**](https://github.com/squid-protocol/gitgalaxy) | ➖ counts + ReDoS tests | ❌ regex, no AST | ✅ 57 · regex | ✅ counts | ✅ static metrics report | ❌ full scan (current) |
+| [**openwiki**](https://github.com/langchain-ai/openwiki) | ❌ prompt only | ❌ none (LLM reads) | ❔ any · no parser (LLM) | ❔ agent-visited | ✅ read Markdown | ➖ git-HEAD anchored |
 
 ### What I take from it
 
