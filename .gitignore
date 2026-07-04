@@ -8,9 +8,9 @@
 .cache/
 
 # Claude Code reads skills only from .claude/skills/, but the canonical copy lives in
-# .agents/skills/ (shared with Codex + Antigravity). install-skill.sh symlinks it here;
-# don't commit the mirror — keep one source of truth visible in the tree.
-/.claude/skills/
+# .agents/skills/ (shared with Codex + Antigravity). We COMMIT the .claude/skills/ symlinks
+# (relative links into .agents/skills/) so skills are wired up in Claude Code out of the box.
+# Still one source of truth: the symlinks just point at .agents/skills/.
 
 # Python
 __pycache__/
