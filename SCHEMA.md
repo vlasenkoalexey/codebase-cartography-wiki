@@ -1,15 +1,18 @@
-# wikify-repo-demo — project memory
+# code-comprehension-survey — project memory
 
 ## What this is
-A working instantiation of the
+A survey of code-comprehension tools (wikify-repo, graphify, understand-anything, …) written as the
+thing it studies: each tool's source is ingested into a grounded markdown wiki, so every claim in the
+comparison cites the tool's actual implementation. It is a working instantiation of the
 [Karpathy LLM-wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) that
 handles **two kinds of source** in one knowledge base:
-- **Code repos** — ingested by the **`wikify-ingest-repo`** skill (which ships with
-  [wikify-repo](https://github.com/vlasenkoalexey/wikify-repo), installed into `.agents/skills/` here)
-  into a grounded, lint-clean wiki. This is the headline — the repo is the **companion demo for
-  wikify-repo**, showing what that tool produces.
-- **Articles / docs / notes** — ingested the classic Karpathy way: read the source, write a summary
-  page, update the topic and entity pages it touches, cross-link, log.
+- **Code repos** — the tools under survey, ingested by the **`wikify-ingest-repo`** skill (which ships
+  with [wikify-repo](https://github.com/vlasenkoalexey/wikify-repo), installed into `.agents/skills/`
+  here) into a grounded, lint-clean wiki. Each tool's own source becomes a silo; the cross-repo
+  concept pages are where the survey's comparison lives — grounded in real symbols, not hand-waving.
+- **Articles / docs / notes** — the surrounding literature (papers, blog posts, design docs), ingested
+  the classic Karpathy way: read the source, write a summary page, update the topic and entity pages it
+  touches, cross-link, log.
 
 Both paths feed **one wiki**, one `index.md`, one `log.md`. Code is a powerful *automated* source type
 alongside prose; everything below tells the agent how to maintain both.

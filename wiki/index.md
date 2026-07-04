@@ -8,8 +8,9 @@ relevant entry here, then drill into its page. See [`log.md`](log.md) for the ch
 One `wiki/code/<slug>/` per ingested repo. Open its `overview.md` as a map, then `grep` to the
 concept/catalog page and cite the catalog anchor; drop to the pinned source for line-level certainty.
 
-_None yet._ — run **`ingest <repo-url-or-path>`** to add one (the skill adds a row here and an entry
-to [`log.md`](log.md)).
+| Tool | Overview | Pinned | What it answers |
+|---|---|---|---|
+| **wikify-repo** | [overview](code/wikify-repo/overview.md) | `05228d7` | The code-comprehension tool this survey is written with: how it turns a repo into a grounded markdown wiki — SCIP symbol-graph grounding, packet-based LLM synthesis, the citation-lint gate, whole-repo coverage floor, incremental reconcile, adversarial verify, cross-repo connect. 16 concept pages + 14 doc-concepts over 664 symbols (100% represented). |
 
 ## Cross-repo concepts
 Host vocabulary (`wiki/concepts/<key>.md`), wired by the `wikify-connect-repo` skill: each concept page
