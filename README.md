@@ -70,7 +70,7 @@ purpose," not "better tool." **Language coverage** is a plain count, not a verdi
 directly against grounding precision (compare the two adjacent columns: wikify-repo is the deepest but
 narrowest; gitgalaxy and openwiki are the broadest but shallowest).
 
-**Legend:** ✅ strong · ➖ partial / trade-off · ❌ weak or absent · ❔ unknown / unbounded — with the *why* annotated in-cell. **Language coverage** uses the same scale as a *breadth* reading (✅ broad, bundled multi-language support · ➖ limited / external-indexer-bound · ❌ none · ❔ unbounded but unparsed) — read it as breadth only: it trades against grounding precision, so a ✅ here often sits next to a ➖/❌ in the Grounding-precision column. (wikify-repo draws at ➖: it can index only where a SCIP indexer exists and must install it, where the others bundle tree-sitter/regex grammars for many languages out of the box.)
+**Legend:** ✅ strong · ➖ partial / trade-off · ❌ weak or absent · ❔ unknown / unbounded
 
 | Tool | Faithfulness gate | Grounding precision | Language coverage | Whole-repo coverage | Tool-free retrieval | Commit-pinned |
 |---|:--|:--|:--|:--|:--|:--|
